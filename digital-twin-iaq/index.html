@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Indoor Air Quality Digital Twin</title>
+  <style>
+    body { margin: 0; overflow: hidden; font-family: Arial, sans-serif; }
+    #bg { position: absolute; top: 0; left: 0; z-index: 0; }
+    #air-quality-indicator {
+      position: absolute; top: 30px; left: 30px; z-index: 1;
+      background-color: rgba(0, 0, 0, 0.8); color: white; padding: 20px; border-radius: 10px;
+      width: 300px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .value-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      display: inline-block; background-color: gray;
+    }
+    .parameter-section {
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .parameter-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    h2 {
+      font-size: 1.2em;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    #air-quality-controls {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      z-index: 2;
+    }
+    #air-quality-controls select {
+      padding: 8px;
+      font-size: 14px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg"></canvas>
+  <div id="air-quality-controls">
+    <select id="air-quality-option">
+      <option value="none">None</option>
+      <option value="air-purifier">Air Purifier</option>
+      <option value="plants">Plants</option>
+      <option value="open-window">Open Window</option>
+      <option value="humidifier">Humidifier</option>
+    </select>
+  </div>
+  <div id="air-quality-indicator">
+    <h2>Indoor Air Quality Monitoring</h2>
+    
+    <div class="parameter-section">
+      <div class="value-row"><span class="dot" id="pm-dot"></span><strong>PM2.5:</strong> <span id="pm-value">--</span> µg/m³</div>
+      <div><strong>Status:</strong> <span id="pm-status">Loading...</span></div>
+      <div><strong>Last Updated:</strong> <span id="pm-time">--</span></div>
+    </div>
+    
+    <div class="parameter-section">
+      <div class="value-row"><span class="dot" id="co2-dot"></span><strong>CO₂:</strong> <span id="co2-value">--</span> ppm</div>
+      <div><strong>Status:</strong> <span id="co2-status">Loading...</span></div>
+      <div><strong>Last Updated:</strong> <span id="co2-time">--</span></div>
+    </div>
+    
+    <div class="parameter-section">
+      <div class="value-row"><span class="dot" id="temp-dot"></span><strong>Temperature:</strong> <span id="temp-value">--</span> °C</div>
+      <div><strong>Status:</strong> <span id="temp-status">Loading...</span></div>
+      <div><strong>Last Updated:</strong> <span id="temp-time">--</span></div>
+    </div>
+    
+    <div class="parameter-section">
+      <div class="value-row"><span class="dot" id="humidity-dot"></span><strong>Humidity:</strong> <span id="humidity-value">--</span> %</div>
+      <div><strong>Status:</strong> <span id="humidity-status">Loading...</span></div>
+      <div><strong>Last Updated:</strong> <span id="humidity-time">--</span></div>
+    </div>
+  </div>
+  <script type="module" src="/src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+digital-twin-iaq/
+├── index.html
+├── style.css
+├── main.js
+├── model/
+│   └── scene.gltf
+├── src/
+│   └── app.js
+|    ├──/data/
+│       ├── dataset1.csv         # PM2.5 data (working)
+│       └── dataset2.csv         # CO₂ data (needs to be parsed carefully)
+├── assets/
+│   └── icons/                   # Optional: air quality level icons, dots, etc.
+├── lib/
+│   ├── three.module.js
+│   ├── GLTFLoader.js
+│   └── OrbitControls.js
+└── README.md
